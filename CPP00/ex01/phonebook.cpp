@@ -23,19 +23,19 @@ void	phonebook::general_prompt(void) {
 		std::cin >> buff;
 		if (!buff.compare(ADD)) {
 			this->_prompt_for_info();
-			std::cout << "Contact added!" << std::endl;
+			std::cout << "Contact added!" << std::endl << std::endl;
 		}
 		else if (!buff.compare(SEARCH)) {
 			this->_display_table();
 		}
 		else if (!buff.compare(EXIT)) {
-			std::cout << "Program exited" << std::endl;
+			std::cout << "Program exited" << std::endl << std::endl;
 			for (int i = 0; i < MAX_CONTACTS; i++)
 				this->book[i].~contact();
 			exit(0);
 		}
 		else
-			std::cout << "Valid commands: ADD, SEARCH, EXIT" << std::endl;
+			std::cout << "Valid commands: ADD, SEARCH, EXIT" << std::endl << std::endl;
 		buff.clear();
 	}
 }
@@ -45,7 +45,7 @@ void	phonebook::_prompt_for_info(void) {
 	std::string buff;
 	int			index;
 
-	index = this->_total_contacts % MAX_CONTACTS;
+	index = (this->_total_contacts % MAX_CONTACTS);
 
 	std::cout << "First name:" << std::endl;
 	std::cin >> buff;
@@ -124,6 +124,9 @@ void	phonebook::_display_table(void) {
 				else
 					std::cout << std::endl;
 			}
+			if (i == MAX_CONTACTS - 1)
+				break ;
 		}
+		std::cout << std::endl;
 	}
 }
