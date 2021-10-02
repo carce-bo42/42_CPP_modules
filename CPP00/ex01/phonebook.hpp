@@ -22,7 +22,7 @@ class phonebook {
 	private:
 
 		int			_total_contacts;
-		void		_prompt_for_info(int type);
+		void		_prompt_for_info(void);
 		void		_display_table(void);
 
 };

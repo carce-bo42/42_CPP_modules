@@ -2,6 +2,7 @@
 # define CONTACT_HPP
 
 #include <iostream>
+#include <iomanip>
 
 # define FIRST_NAME 0
 # define LAST_NAME 	1

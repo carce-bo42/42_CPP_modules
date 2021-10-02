@@ -1,10 +1,10 @@
 #include "contact.hpp"
+#include "phonebook.hpp"
 
 int main()
 {
-	contact	lol;
+	phonebook pbook;
 
-	lol.set_arg(FIRST_NAME, "Christian");
-	std::cout << lol.get_arg(FIRST_NAME) << std::endl;
+	pbook.general_prompt();
 	return 0;
 }

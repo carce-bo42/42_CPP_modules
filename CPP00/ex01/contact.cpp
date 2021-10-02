@@ -3,7 +3,7 @@
 contact::contact(void) {
 
 	for (int i = 0; i >= 4; i++)
-		contact::set_arg(i, NULL);
+		contact::set_arg(i, "");
 	return ;
 
 }
