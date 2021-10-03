@@ -114,7 +114,7 @@ void	phonebook::_display_table(void) {
 	}
 	else {
 		display_header();
-		for (int i = 0; !this->book[i].get_arg(0).empty(); i++) {
+		for (int i = 0; this->book[i].get_arg(0).empty(); i++) {
 			display_info(std::to_string(i));
 			std::cout << "|";
 			for (int j = 0; j < 4; j++) {
