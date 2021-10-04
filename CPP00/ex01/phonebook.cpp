@@ -127,6 +127,6 @@ void	phonebook::_display_table(void) {
 			if (i == MAX_CONTACTS - 1)
 				break ;
 		}
-		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 }
