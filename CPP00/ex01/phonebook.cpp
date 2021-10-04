@@ -47,30 +47,27 @@ void	phonebook::_prompt_for_info(void) {
 
 	index = (this->_total_contacts % MAX_CONTACTS);
 
-	std::cout << "First name:" << std::endl;
-	std::cin >> buff;
+	std::cin.ignore(1, '\n');
+
+	std::cout << "First name: ";
+	std::getline(std::cin, buff);
 	this->book[index].set_arg(FIRST_NAME, buff);
-	buff.clear();
 
-	std::cout << "Last name:" << std::endl;
-	std::cin >> buff;
+	std::cout << "Last name: ";
+	std::getline(std::cin, buff);
 	this->book[index].set_arg(LAST_NAME, buff);
-	buff.clear();
 
-	std::cout << "Nickname:" << std::endl;
-	std::cin >> buff;
+	std::cout << "Nickname: ";
+	std::getline(std::cin, buff);
 	this->book[index].set_arg(NICKNAME, buff);
-	buff.clear();
 
-	std::cout << "Phone Number:" << std::endl;
-	std::cin >> buff;
+	std::cout << "Phone Number: ";
+	std::getline(std::cin, buff);
 	this->book[index].set_arg(PHONE_NBR, buff);
-	buff.clear();
 
-	std::cout << "Darkest Secret:" << std::endl;
-	std::cin >> buff;
+	std::cout << "Darkest Secret: ";
+	std::getline(std::cin, buff);
 	this->book[index].set_arg(SECRET, buff);
-	buff.clear();
 
 	this->_total_contacts += 1;
 
