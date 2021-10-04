@@ -4,15 +4,15 @@ SRCS = Account.cpp tests.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-CC = clang++
+CXX = clang++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.o:%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.cpp %.hpp Makefile
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 all: $(NAME)
 

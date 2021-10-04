@@ -101,10 +101,10 @@ bool	Account::makeWithdrawal(int withdrawal) {
 void	Account::displayAccountsInfos(void) {
 
 	Account::_displayTimestamp();
-	write_formatted_arg("accounts", Account::_nbAccounts, 0);
-	write_formatted_arg("total", Account::_totalAmount, 0);
-	write_formatted_arg("deposits", Account::_totalNbDeposits, 0);
-	write_formatted_arg("withdrawals", Account::_totalNbWithdrawals, 1);
+	write_formatted_arg("accounts", Account::getTotalAmount(), 0);
+	write_formatted_arg("total", Account::getNbAccounts(), 0);
+	write_formatted_arg("deposits", Account::getNbDeposits(), 0);
+	write_formatted_arg("withdrawals", Account::getNbWithdrawals(), 1);
 
 }
 
