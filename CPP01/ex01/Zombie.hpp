@@ -24,10 +24,11 @@ class Zombie {
 
 		std::string 		_name;
 
-
 };
 
 Zombie*	newZombie(std::string name);
 void	randomChump(std::string name);
+
+Zombie*	ZombieHorde(int N, std::string name);
 
 #endif

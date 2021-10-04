@@ -11,8 +11,9 @@ std::string	Zombie::_create_default_name(void) {
 	std::string default_name;
 
 	default_name = "DefaultZombie";
-	default_name += Zombie::_getNbZombies(); 
+	default_name += std::to_string(Zombie::_getNbZombies()); 
 	return default_name ;
+
 }
 
 
@@ -25,7 +26,6 @@ Zombie::Zombie(std::string name) : _name(name) {
 
 Zombie::Zombie(void) : _name(Zombie::_create_default_name()) {
 
-	this->announce();
 	Zombie::_nbZombies += 1;
 	return ;
 
