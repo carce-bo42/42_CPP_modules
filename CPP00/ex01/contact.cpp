@@ -10,6 +10,13 @@ contact::contact(void) {
 
 contact::~contact(void) {
 
+	if (!this->get_arg(FIRST_NAME).empty()) {
+
+		std::cout << this->get_arg(FIRST_NAME)
+					<< " " << this->get_arg(LAST_NAME)
+					<< "\'s information lost forever" << std::endl;
+
+	}
 	return ;
 
 }
