@@ -11,6 +11,9 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 %.o: %.cpp %.hpp Makefile
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+%.o: %.cpp Makefile
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
