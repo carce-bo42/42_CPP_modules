@@ -53,8 +53,6 @@ int main(int ac, char **av)
 	// with the getter .str() from stringstream).
 	std::string	filestr = buffer.str();
 
-	//Now witth the main purpose of the exercise: 
-
 	//open the filename.result to output stream.
 	std::ofstream ofs;
 
