@@ -12,15 +12,15 @@ HumanB::~HumanB(void) {
 
 }
 
-void	HumanB::setWeapon(std::string wtype) {
+void	HumanB::setWeapon(Weapon& wname) {
 
-	this->w_name->setType(wtype);
+	this->_wname = &wname;
 
 }
 
 std::string	HumanB::getWeapon(void) const {
 
-	return this->_wname.getType() ;
+	return this->_wname->getType() ;
 
 }
 
@@ -33,5 +33,12 @@ void	HumanB::setName(std::string name) {
 std::string	HumanB::getName(void) const {
 
 	return this->_name;
+
+}
+
+void	HumanB::attack(void) const {
+
+	std::cout << this->getName() << " attacks with his " << this->getWeapon() << std::endl;
+	return ;
 
 }
