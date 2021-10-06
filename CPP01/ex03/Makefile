@@ -1,4 +1,4 @@
-NAME = ptr_ref_test
+NAME = unnecesary_violence
 
 SRCS = main.cpp \
 	   Weapon.cpp \

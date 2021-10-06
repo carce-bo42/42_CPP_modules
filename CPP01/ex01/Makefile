@@ -1,4 +1,4 @@
-NAME = zombie_test
+NAME = Moar_brainz
 
 SRCS = Zombie.cpp \
 	   ZombieHorde.cpp \

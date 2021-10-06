@@ -1,4 +1,4 @@
-NAME = zombie_test
+NAME = brainz
 
 SRCS = Zombie.cpp \
 	   newZombie.cpp \

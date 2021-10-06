@@ -1,19 +1,14 @@
 #include "Karen.hpp"
-#include <vector>
 #include <string>
 
 Karen::Karen(void) {
 
-	std::cout << "*Wild Karen appears*" << std::endl;
-	std::cout << "Beware suboptimal customer service providers for I have something to say to all of you!" << std::endl;
 	return ;
 
 }
 
 Karen::~Karen(void) {
 
-	std::cout << "See you and your manager in hell" << std::endl;
-	std::cout << "*Karen suddenly explodes*" << std::endl;
 	return ;
 
 }

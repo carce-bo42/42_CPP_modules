@@ -1,5 +1,4 @@
 #include "Karen.hpp"
-#include <vector>
 #include <string>
 
 Karen::Karen(void) {

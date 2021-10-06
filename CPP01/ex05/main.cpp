@@ -17,10 +17,11 @@ int main() {
 	sample_karen.complain("DEBUG");
 	sample_karen.complain("WARNING");
 	sample_karen.complain("WARNING");
+	sample_karen.complain("INFO");
 	sample_karen.complain("WARNING");
 	sample_karen.complain("WARNING");
 
-	//Error message when karen gets an unvalid level: (it becomes very kind and comprehensive).
+	//Error message when karen gets an unvalid level: (it becomes very kind and comprehensive, she even gives away money).
 	sample_karen.complain("aa");
 
 	return 0 ;

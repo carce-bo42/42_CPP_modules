@@ -1,4 +1,4 @@
-NAME = ptr_ref_test
+NAME = HI_THIS_IS_BRAIN
 
 SRCS = main.cpp
 

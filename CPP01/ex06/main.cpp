@@ -15,7 +15,9 @@ int main(int ac, char **av) {
 	for (int i = 0; i < 4; i++) {
 		if (levels[i] == av[1]) {
 			arg_level = i;
+		}
 	}
+	int do_default = 1;
 
 	switch (arg_level) {
 
@@ -24,41 +26,30 @@ int main(int ac, char **av) {
 			std::cout << "[ DEBUG ]" << std::endl;
 			sample_karen.complain("DEBUG");
 			std::cout << std::endl;
-			arg_level += 1;
 
 		case 1 :
 
 			std::cout << "[ INFO ]" << std::endl;
 			sample_karen.complain("INFO");
 			std::cout << std::endl;
-			arg_level += 1;
 
 		case 2 :
 
 			std::cout << "[ WARNING ]" << std::endl;
 			sample_karen.complain("WARNING");
 			std::cout << std::endl;
-			arg_level += 1;
 
 		case 3 :
 
 			std::cout << "[ ERROR ]" << std::endl;
 			sample_karen.complain("ERROR");
 			std::cout << std::endl;
-			break ;
+			do_default = 0;
 
 		default:
 
-			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-			break ; 
+			if (do_default) 
+				std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
-}
-
-
-
-
-
-
 	return 0 ;
-	
 }
