@@ -13,7 +13,7 @@ int main(int ac, char **av) {
 	int	arg_level = -1;
 
 	for (int i = 0; i < 4; i++) {
-		if (levels[i] == av[1]) {
+		if (!levels[i].compare(av[1])) {
 			arg_level = i;
 		}
 	}

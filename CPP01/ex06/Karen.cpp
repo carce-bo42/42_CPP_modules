@@ -19,7 +19,7 @@ void	Karen::complain(std::string level) {
 	void	(Karen::*functions[])(void) = {&Karen::debug, &Karen::info, &Karen::warning, &Karen::error};
 
 	for (int i = 0; i < 4; i++) {
-		if (levels[i] == level) {
+		if (!levels[i].compare(level)) {
 			(this->*functions[i])();
 			return ;
 		}
