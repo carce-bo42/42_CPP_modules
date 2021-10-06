@@ -67,7 +67,6 @@ int main(int ac, char **av)
 	int	do_increment = 1;
 
 	while (it != filestr.end()) {
-		do_increment = 1;
 		if (*it == s1[0]) {	
 			if (!compare_strings(s1, filestr, it)) {
 				ofs << s2;
