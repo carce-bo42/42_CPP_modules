@@ -1,75 +1,122 @@
 #include "Fixed.hpp"
 
+///////////////////
+// Constructors //
+//////////////////
+
 Fixed::Fixed(void) : _fpvalue(0) {
-
-	std::cout << "Default constructor called" << std::endl;
-
 }
 
 Fixed::Fixed(Fixed const & src) {
 
-	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 
 }
 
-// 0001 is 2^0 = 1. 0001 << 1 = 0010 which is 2^1.
-// It seems natural that 2^_fbits = 1 << _fbits.
-Fixed::Fixed(float const n ) : _fpvalue(roundf(n * (1 << Fixed::_fbits))) {
-
-	std::cout << "Float constructor called" << std::endl;
-
+Fixed::Fixed(float const n ) : _fpvalue(roundf(n * (float)(1 << Fixed::_fbits))) {
 }
 
 Fixed::Fixed( int const n) : _fpvalue(n << Fixed::_fbits) {
-
-	std::cout << "Int constructor called" << std::endl;
-
 }
+
+
+/////////////////
+// Destructor //
+////////////////
 
 Fixed::~Fixed( void ) {
-
-	std::cout << "Destructor called" << std::endl;
-
 }
+
+
+////////////////////
+// Get/Set // 
+///////////////////
 
 int	Fixed::getRawBits( void ) const {
 
-	//std::cout << "getRawBits member function called" << std::endl;
 	return this->_fpvalue;
 
 }
 
 void	Fixed::setRawBits( int const raw ) {
 
-	//std::cout << "setRawBits member function called" << std::endl;
 	this->_fpvalue = raw;
 
 }
 
+
+///////////////////////////
+// Conversion functions // 
+//////////////////////////
+
 float	Fixed::toFloat( void ) const {
 
-	return ((float)this->getRawBits() / (1 << Fixed::_fbits)) ;
+	// This line doesnt work because (1 >> 8) is esentially 0:
+	// 0000 0001 >> 8 = 0000 0000 (shifting to the right is problematic).
+	//return ((float)this->getRawBits() * (float)(1 >> Fixed::_fbits)) ;
+	return ( (float)this->getRawBits() / (float)(1 << Fixed::_bits) ) ;
 
 }
 
 int	Fixed::toInt( void ) const {
 
-	return (this->getRawBits() >> Fixed::_fbits) ;
+	return ( this->getRawBits() >> Fixed::_fbits ) ;
 	
 }
 
-Fixed &		Fixed::operator=( Fixed const & rhs ) {
 
-	std::cout << "Assignation operator called" << std::endl;
-	this->_fpvalue = rhs.getRawBits();
-	return *this;
+/////////////////////////
+// Operator overloads //
+////////////////////////
+
+bool	Fixed::operator > ( Fixed const	&rhs) {
+
+	return ( this->getRawBits() > rhs.getRawBits() ) ;
 
 }
 
-std::ostream &	operator<<( std::ostream & o, Fixed const & rhs ) {
+bool	Fixed::operator < ( Fixed const	&rhs ) {
+
+	return ( this->getRawBits() < rhs.getRawBits() ) ;
+
+}
+
+bool	Fixed::operator >= ( Fixed const &rhs ) {
+
+	return ( this->getRawBits() >= rhs.getRawBits() ) ;
+
+}
+
+bool	Fixed::operator <= ( Fixed const &rhs ) {
+
+	return ( this->getRawBits() <= rhs.getRawBits() ) ;
+
+}
+
+bool	Fixed::operator == ( Fixed const &rhs ) {
+
+	return ( this->getRawBits() == rhs.getRawBits() ) ;
+
+}
+
+bool	Fixed::operator != ( Fixed const &rhs ) {
+
+	return ( this->getRawBits() != rhs.getRawBits() ) ;
+
+}
+
+Fixed &		Fixed::operator=( Fixed const &rhs ) {
+
+	this->_fpvalue = rhs.getRawBits();
+	return *this ;
+
+}
+
+std::ostream&	operator<<( std::ostream & o, Fixed const &rhs ) {
 
 	o << rhs.toFloat();
 	return o;
 
 }
+
+

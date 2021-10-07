@@ -15,7 +15,7 @@ Fixed::Fixed(Fixed const & src) {
 
 // 0001 is 2^0 = 1. 0001 << 1 = 0010 which is 2^1.
 // It seems natural that 2^_fbits = 1 << _fbits.
-Fixed::Fixed(float const n ) : _fpvalue(roundf(n * (1 << Fixed::_fbits))) {
+Fixed::Fixed(float const n ) : _fpvalue(roundf(n * (float)(1 << Fixed::_fbits))) {
 
 	std::cout << "Float constructor called" << std::endl;
 
@@ -49,7 +49,7 @@ void	Fixed::setRawBits( int const raw ) {
 
 float	Fixed::toFloat( void ) const {
 
-	return ((float)this->getRawBits() / (1 << Fixed::_fbits)) ;
+	return (((float)this->getRawBits()) / ((float)(1 << Fixed::_fbits))) ;
 
 }
 

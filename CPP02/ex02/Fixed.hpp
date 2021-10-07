@@ -6,33 +6,40 @@ class Fixed {
 	public:
 
 		int		getRawBits( void ) const;
-		void	setRawBits( int const waw );
+		void	setRawBits( int const raw );
 
 		float	toFloat( void ) const ;
 		int		toInt( void ) const ;
 
+		static Fixed&	min( Fixed const &x, Fixed const &y );
+		static Fixed&	max( Fixed const &x, Fixed const &y );
+
 		Fixed( void );
-		Fixed( Fixed const & src );
+		Fixed( Fixed const &src );
 		Fixed( int const n );
 		Fixed( float const n );
 
 		~Fixed( void );
 
-		bool	operator=( Fixed const & rhs );
-		bool	operator>( Fixed const & rhs );
-		bool	operator>( Fixed const & rhs );
-		bool	operator>=( Fixed const & rhs );
-		bool	operator<=( Fixed const & rhs );
-		bool	operator==( Fixed const & rhs );
-		bool	operator!=( Fixed const & rhs );
+		Fixed&	operator = ( Fixed const &rhs );
 
-		Fixed	operator+( Fixed const & rhs );
-		Fixed	operator-( Fixed const & rhs );
-		Fixed	operator*( Fixed const & rhs );
-		Fixed	operator/( Fixed const & rhs );
+		bool	operator > ( Fixed const &rhs );
+		bool	operator < ( Fixed const &rhs );
+		bool	operator >= ( Fixed const &rhs );
+		bool	operator <= ( Fixed const &rhs );
+		bool	operator == ( Fixed const &rhs );
+		bool	operator != ( Fixed const &rhs );
 
-		Fixed & opera
+		Fixed	operator + ( Fixed const &rhs );
+		Fixed	operator - ( Fixed const &rhs );
+		Fixed	operator * ( Fixed const &rhs );
+		Fixed	operator / ( Fixed const &rhs );
 
+		Fixed&	operator ++ ( void ); //prefix increment
+		Fixed	operator ++ ( int ); //postfix increment
+
+		Fixed&	operator -- ( void ); //prefix decrement
+		Fixed	operator -- ( int ); //postfix decrement
 
 	private:
 
@@ -41,4 +48,6 @@ class Fixed {
 
 };
 
-std::ostream &	operator<<( std::ostream & o, Fixed const & rhs );
+const Fixed&	min( Fixed const &x, Fixed const &y );
+const Fixed&	max( Fixed const &x, Fixed const &y );
+std::ostream&	operator<<( std::ostream &o, Fixed const &rhs );
