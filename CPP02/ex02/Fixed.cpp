@@ -140,20 +140,17 @@ Fixed	Fixed::operator * ( Fixed const &rhs ) {
 	output.setRawBits( aux_1 * aux_2 );
 
 	return ( output ) ;
-}	
+}
 
 Fixed	Fixed::operator / ( Fixed const &rhs ) {
 
-	Fixed	output;
 	int		aux_1;
 	int		aux_2;
 
 	aux_1 = this->getRawBits() << (int)(Fixed::_fbits / 2) ;
 	aux_2 = rhs.getRawBits() << (int)(Fixed::_fbits / 2) ;
 
-	output.setRawBits( aux_1 / aux_2 );
-
-	return ( output ) ;
+	return ( Fixed((float)aux_1 / (float)aux_2) ) ;
 
 }
 
@@ -198,26 +195,38 @@ Fixed	Fixed::operator -- ( int ) {
 
 const Fixed&	Fixed::min( const Fixed &x, const Fixed &y ) {
 
-	return ( (x < y) ? x : y ) ;
+	if (x < y)
+		return x;
+	else
+		return y;
 
 }
 
 const Fixed&	Fixed::max( const Fixed &x, const Fixed &y ) {
 
-	return ( (x > y) ? x : y ) ;
+	if (x > y)
+		return x;
+	else
+		return y;
 
 }
 
 
 Fixed&	Fixed::min( Fixed &x, Fixed &y ) {
 
-	return ( (x < y) ? x : y ) ;
+	if (x < y)
+		return x;
+	else
+		return y;
 
 }
 
 Fixed&	Fixed::max( Fixed &x, Fixed &y ) {
 
-	return ( (x > y) ? x : y ) ;
+	if (x > y)
+		return x;
+	else
+		return y;
 
 }
 
@@ -227,27 +236,39 @@ Fixed&	Fixed::max( Fixed &x, Fixed &y ) {
 
 const Fixed&	min( Fixed const &x, Fixed const &y ) {
 
-	return ( (x < y) ? x : y ) ;
+	if (x < y)
+		return x;
+	else
+		return y;
 
 }
 
 
 const Fixed&	max( Fixed const &x, Fixed const &y ) {
 
-	return ( (x > y) ? x : y ) ;
+	if (x > y)
+		return x;
+	else
+		return y;
 
 }
 
 Fixed&	min( Fixed &x, Fixed &y ) {
 
-	return ( (x < y) ? x : y ) ;
+	if (x < y)
+		return x;
+	else
+		return y;
 
 }
 
 
 Fixed&	max( Fixed &x, Fixed &y ) {
 
-	return ( (x > y) ? x : y ) ;
+	if (x > y)
+		return x;
+	else
+		return y;
 
 }
 
