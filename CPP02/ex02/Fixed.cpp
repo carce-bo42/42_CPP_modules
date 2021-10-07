@@ -54,7 +54,7 @@ float	Fixed::toFloat( void ) const {
 	// This line doesnt work because (1 >> 8) is esentially 0:
 	// 0000 0001 >> 8 = 0000 0000 (shifting to the right is problematic).
 	//return ((float)this->getRawBits() * (float)(1 >> Fixed::_fbits)) ;
-	return ( (float)this->getRawBits() / (float)(1 << Fixed::_bits) ) ;
+	return ( (float)this->getRawBits() / (float)(1 << Fixed::_fbits) ) ;
 
 }
 
@@ -76,37 +76,37 @@ Fixed &		Fixed::operator = ( Fixed const &rhs ) {
 
 }
 
-bool	Fixed::operator > ( Fixed const	&rhs) {
+bool	Fixed::operator > ( Fixed const	&rhs) const {
 
 	return ( this->getRawBits() > rhs.getRawBits() ) ;
 
 }
 
-bool	Fixed::operator < ( Fixed const	&rhs ) {
+bool	Fixed::operator < ( Fixed const	&rhs ) const {
 
 	return ( this->getRawBits() < rhs.getRawBits() ) ;
 
 }
 
-bool	Fixed::operator >= ( Fixed const &rhs ) {
+bool	Fixed::operator >= ( Fixed const &rhs ) const {
 
 	return ( this->getRawBits() >= rhs.getRawBits() ) ;
 
 }
 
-bool	Fixed::operator <= ( Fixed const &rhs ) {
+bool	Fixed::operator <= ( Fixed const &rhs ) const {
 
 	return ( this->getRawBits() <= rhs.getRawBits() ) ;
 
 }
 
-bool	Fixed::operator == ( Fixed const &rhs ) {
+bool	Fixed::operator == ( Fixed const &rhs ) const {
 
 	return ( this->getRawBits() == rhs.getRawBits() ) ;
 
 }
 
-bool	Fixed::operator != ( Fixed const &rhs ) {
+bool	Fixed::operator != ( Fixed const &rhs ) const {
 
 	return ( this->getRawBits() != rhs.getRawBits() ) ;
 
@@ -162,7 +162,7 @@ Fixed	Fixed::operator / ( Fixed const &rhs ) {
 // this format can handle.
 Fixed&	Fixed::operator ++ ( void ) {
 
-	this->setRawBits( this->getRawBits + 1 );
+	this->setRawBits( this->getRawBits() + 1 );
 	return ( *this ) ;
 
 }
@@ -178,7 +178,7 @@ Fixed	Fixed::operator ++ ( int ) {
 
 Fixed&	Fixed::operator -- ( void ) {
 
-	this->setRawBits( this->getRawBits - 1 );
+	this->setRawBits( this->getRawBits() - 1 );
 	return ( *this ) ;
 
 }
@@ -196,21 +196,34 @@ Fixed	Fixed::operator -- ( int ) {
 // Class Functions //
 /////////////////////	
 
-Fixed&	Fixed::min( Fixed const &x, Fixed const &y ) {
+const Fixed&	Fixed::min( const Fixed &x, const Fixed &y ) {
 
 	return ( (x < y) ? x : y ) ;
 
 }
 
-Fixed&	Fixed::max( Fixed const &x, Fixed const &y ) {
+const Fixed&	Fixed::max( const Fixed &x, const Fixed &y ) {
 
 	return ( (x > y) ? x : y ) ;
 
 }
 
-///////////////////////////////
-// Outter operator overloads//
-//////////////////////////////
+
+Fixed&	Fixed::min( Fixed &x, Fixed &y ) {
+
+	return ( (x < y) ? x : y ) ;
+
+}
+
+Fixed&	Fixed::max( Fixed &x, Fixed &y ) {
+
+	return ( (x > y) ? x : y ) ;
+
+}
+
+/////////////////////////////////
+//Outter function definitions //
+////////////////////////////////
 
 const Fixed&	min( Fixed const &x, Fixed const &y ) {
 
@@ -225,6 +238,22 @@ const Fixed&	max( Fixed const &x, Fixed const &y ) {
 
 }
 
+Fixed&	min( Fixed &x, Fixed &y ) {
+
+	return ( (x < y) ? x : y ) ;
+
+}
+
+
+Fixed&	max( Fixed &x, Fixed &y ) {
+
+	return ( (x > y) ? x : y ) ;
+
+}
+
+///////////////////////////////
+// Outter operator overloads//
+//////////////////////////////
 
 std::ostream&	operator << ( std::ostream & o, Fixed const &rhs ) {
 
