@@ -114,13 +114,19 @@ bool	Fixed::operator != ( Fixed const &rhs ) const {
 
 Fixed	Fixed::operator + ( Fixed const &rhs ) {
 
-	return ( Fixed(this->toInt() + rhs.toInt()) ) ;
+	Fixed a;
+
+	a.setRawBits(this->getRawBits() + rhs.getRawBits());
+	return ( a ) ;
 
 }
 
 Fixed	Fixed::operator - ( Fixed const &rhs ) {
 
-	return ( Fixed(this->toInt() - rhs.toInt()) ) ;
+	Fixed a;
+
+	a.setRawBits(this->getRawBits() - rhs.getRawBits());
+	return ( a  ) ;
 
 }
 

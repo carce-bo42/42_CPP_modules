@@ -14,6 +14,7 @@ int main( void ) {
 		std::cout << "x is inside the triangle defined by (a, b, c)." << std::endl;
 	else
 		std::cout << "x is not inside the triangle defined by (a, b, c)." << std::endl;
+
 	Point y( 0.5f, 0.1f);
 
 	if (bsp(a, b, c, y))
