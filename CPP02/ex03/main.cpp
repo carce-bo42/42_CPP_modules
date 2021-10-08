@@ -10,28 +10,20 @@ int main( void ) {
 
 	Point x( 12.0f, -12.0f);
 
-	Point& aREF = a;
-	Point& bREF = b;
-	Point& cREF = c;
-	Point& xREF = x;
-
-	if (bsp(aREF, bREF, cREF, xREF))
+	if (bsp(a, b, c, x))
 		std::cout << "x is inside the triangle defined by (a, b, c)." << std::endl;
 	else
 		std::cout << "x is not inside the triangle defined by (a, b, c)." << std::endl;
-
 	Point y( 0.5f, 0.1f);
-	Point& yREF = y;
 
-	if (bsp(aREF, bREF, cREF, yREF))
+	if (bsp(a, b, c, y))
 		std::cout << "y is inside the triangle defined by (a, b, c)." << std::endl;
 	else
 		std::cout << "y is not inside the triangle defined by (a, b, c)." << std::endl;
 
 	Point z( 1.0f, -1.0f);
-	Point& zREF = z;
 
-	if (bsp(aREF, bREF, cREF, zREF))
+	if (bsp(a, b, c, z))
 		std::cout << "z is inside the triangle defined by (a, b, c)." << std::endl;
 	else
 		std::cout << "z is not inside the triangle defined by (a, b, c)." << std::endl;
