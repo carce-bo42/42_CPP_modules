@@ -1,6 +1,6 @@
 #include "Point.hpp"
 
-bool	bsp(Point const &a, Point const &b, Point const &c, Point const &point);
+bool	bsp(Point const a, Point const b, Point const c, Point const point);
 
 int main( void ) {
 
@@ -11,24 +11,28 @@ int main( void ) {
 
 	Point x( 12.0f, -12.0f);
 
-	//std::cout << "Outside the function call: " << a.xGet() << std::endl;
-	if (bsp(a, b, c, x))
+	Point& aREF = a;
+	Point& bREF = b;
+	Point& cREF = c;
+	Point& xREF = x;
+
+	if (bsp(aREF, bREF, cREF, xREF))
 		std::cout << "x is inside the triangle defined by (a, b, c)." << std::endl;
 	else
 		std::cout << "x is not inside the triangle defined by (a, b, c)." << std::endl;
 
 	Point y( 0.5f, 0.1f);
+	Point& yREF = y;
 
-	std::cout << "Outside the function call: " << a.xGet() << std::endl;
-	if (bsp(a, b, c, y))
+	if (bsp(aREF, bREF, cREF, yREF))
 		std::cout << "y is inside the triangle defined by (a, b, c)." << std::endl;
 	else
 		std::cout << "y is not inside the triangle defined by (a, b, c)." << std::endl;
 
 	Point z( 1.0f, -1.0f);
+	Point& zREF = z;
 
-	std::cout << "Outside the function call: " << a.xGet() << std::endl;
-	if (bsp(a, b, c, z))
+	if (bsp(aREF, bREF, cREF, zREF))
 		std::cout << "z is inside the triangle defined by (a, b, c)." << std::endl;
 	else
 		std::cout << "z is not inside the triangle defined by (a, b, c)." << std::endl;

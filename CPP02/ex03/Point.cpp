@@ -13,12 +13,10 @@ Point::Point( Fixed const &x, Fixed const &y ) : _x(x) , _y(y) {
 Point::Point( float const x, float const y ) : _x(Fixed(x)), _y(Fixed(y)) {
 }
 
-Point::Point( Point &p ) {
-	*this = p;
+Point::Point( Point &p ) : _x(p.xGet()), _y(p.yGet()) {
 }
 
-Point::Point( const Point &p ) {
-	*this = p;
+Point::Point( const Point &p ) : _x(p.xGet()), _y(p.yGet()) {
 }
 
 
