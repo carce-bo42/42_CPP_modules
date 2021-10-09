@@ -4,7 +4,7 @@ ClapTrap::ClapTrap( void ) : _name("Default ClapTrap"),
 										 _HP(10),
 										 _EP(0),
 										 _AD(0) {
-	std::cout << "Default unargumented constructor for ClapTrap " << name << " was called." << std::endl;
+	std::cout << "Default unargumented constructor for ClapTrap " << this->getName() << " was called." << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string name ) : _name(name),

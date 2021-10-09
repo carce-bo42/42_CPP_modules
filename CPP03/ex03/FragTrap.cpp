@@ -1,5 +1,14 @@
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap( void ) : ClapTrap("Default FragTrap") {
+
+	this->setHP(100);
+	this->setEP(100);
+	this->setAD(30);
+
+	std::cout << "FragTrap " << name << " default unargumented constructor called" << std::endl;
+}
+
 FragTrap::FragTrap( std::string name ) : ClapTrap( name ) {
 
 	this->setHP(100);
