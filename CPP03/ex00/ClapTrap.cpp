@@ -1,6 +1,9 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( void ) {
+ClapTrap::ClapTrap( std::string name ) : _name(name),
+										 _HP(10),
+										 _EP(0),
+										 _AD(0) {
 }
 
 ClapTrap::ClapTrap( ClapTrap const &other ) : _name(other.getName()), 
@@ -29,6 +32,7 @@ void	ClapTrap::takeDamage( unsigned int amount ) {
 void	ClapTrap::beRepaired( unsigned int amount ) {
 
 	std::cout << "ClapTrap " << this->getName() << " got repaired " << amount << " Hit Points!" << std::endl; 
+	this->_HP += amount;
 }
 
 std::string	ClapTrap::getName( void ) const {
