@@ -78,6 +78,8 @@ int main() {
 
 	std::cout << b.getName() << " has now  " << b.getHP() << " Hit Points! " << std::endl;
 
+	std::cout << std::endl;
+
 	a.guardGate();
 	b.guardGate();
 
@@ -129,8 +131,10 @@ int main() {
 
 	std::cout << b.getName() << " has now  " << b.getHP() << " Hit Points! " << std::endl;
 
+	std::cout << std::endl;
 	a.highFivesGuys();
 	b.highFivesGuys();
+	std::cout << std::endl;
 
 	a = b;
 

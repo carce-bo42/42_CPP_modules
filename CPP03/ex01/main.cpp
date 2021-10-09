@@ -3,6 +3,7 @@
 int main() {
 
 	///////////////////////////////CLAP TRAP PART//////////////////////////////////
+	std::cout << "/////////////////// CLAP TRAP PART /////////////////////" << std::endl << std:: endl;
 	{
 	ClapTrap	a( "Christian");
 
@@ -46,10 +47,12 @@ int main() {
 
 	std::cout << a.getName() << " has now  " << a.getHP() << " Hit Points! " << std::endl;
 
-	std::cout << std::endl;
 
-	std::cout << std::endl << std::endl;
 	}
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "/////////////////// SCAV TRAP PART /////////////////////" << std::endl;
+	std::cout << std::endl;
 	////////////////////////////// SCAV TRAP PART /////////////////////////////////////////
 	{
 	ScavTrap	a( "Christian");
@@ -78,6 +81,8 @@ int main() {
 	b.beRepaired( 3 );
 
 	std::cout << b.getName() << " has now  " << b.getHP() << " Hit Points! " << std::endl;
+
+	std::cout << std::endl;
 
 	a.guardGate();
 	b.guardGate();
