@@ -4,29 +4,30 @@ ClapTrap::ClapTrap( std::string name ) : _name(name),
 										 _HP(10),
 										 _EP(0),
 										 _AD(0) {
-	std::cout << "Default constructor for ClapTrap " << name << " was called." << std::endl;
+	std::cout << "ClapTrap " << name << " default constructor called." << std::endl;
 }
 
 ClapTrap::ClapTrap( ClapTrap const &other ) : _name(other.getName()), 
 											  _HP(other.getHP()),
 											  _EP(other.getEP()),
 											  _AD(other.getAD()) {
-	std::cout << "Copy constructor for ClapTrap " << other.getName() << " was called." << std::endl;
+
+	std::cout << "ClapTrap " << other.getName() << " copy constructor was called." << std::endl;
 }
 
 ClapTrap::~ClapTrap( void ) {
 
-	std::cout << "Destructor for ClapTrap was called" << std::endl;
+	std::cout << "ClapTrap " << this->getName() << " destructor called" << std::endl;
 }
 
 void	ClapTrap::attack( std::string const &target ) {
 
-	std::cout << "ClapTrap " << this->getName() << " was attacked " << target << ", causing " << this->getAD() << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << this->getName() << " has attacked " << target << ", causing " << this->getAD() << " points of damage!" << std::endl;
 }
 
 void	ClapTrap::takeDamage( unsigned int amount ) {
 
-	std::cout << "ClapTrap " << this->getName() << " took " << amount << " damage!" << std::endl;
+	std::cout << this->getName() << " took " << amount << " damage!" << std::endl;
 	if (amount >= this->getHP())
 		this->setHP(0);
 	else
@@ -35,7 +36,7 @@ void	ClapTrap::takeDamage( unsigned int amount ) {
 
 void	ClapTrap::beRepaired( unsigned int amount ) {
 
-	std::cout << "ClapTrap " << this->getName() << " got repaired " << amount << " Hit Points!" << std::endl; 
+	std::cout << this->getName() << " got repaired " << amount << " Hit Points!" << std::endl; 
 	this->_HP += amount;
 }
 

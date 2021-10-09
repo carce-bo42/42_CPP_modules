@@ -1,8 +1,8 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main() {
 
-	ClapTrap	a( "Christian");
+	ScavTrap	a( "Christian");
 
 	a.attack( "log of wood with spikes" );
 	a.takeDamage( 5 );
@@ -15,9 +15,9 @@ int main() {
 
 	std::cout << std::endl;
 
-	std::cout << "Now we copy " << a.getName() << " into a new ClapTrap and name it different:" << std::endl;
+	std::cout << " Now we copy " << a.getName() << " into a new ScavTrap and name it different:" << std::endl;
 
-	ClapTrap	b( a );
+	ScavTrap	b( a );
 
 	b.setName( "Some other Christian" ); 
 	b.attack( "log of wood with spikes" );
@@ -28,5 +28,8 @@ int main() {
 	b.beRepaired( 3 );
 
 	std::cout << b.getName() << " has now  " << b.getHP() << " Hit Points! " << std::endl;
+
+	a.guardGate();
+	b.guardGate();
 	return 0;
 }
