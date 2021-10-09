@@ -1,16 +1,6 @@
 #include "DiamondTrap.hpp"
 #include <string>
 
-std::string		DiamondTrap::getName( void ) const {
-
-	return this->_name;
-}
-
-void		DiamondTrap::setName( std::string const &NewName ) {
-
-	this->_name = NewName;
-}
-
 DiamondTrap::DiamondTrap( void ) : ScavTrap(),
 								   FragTrap() {
 
@@ -26,7 +16,7 @@ DiamondTrap::DiamondTrap( void ) : ScavTrap(),
 
 DiamondTrap::DiamondTrap( std::string name ) : ScavTrap( name ),
 											   FragTrap( name ) {
-	this->DiamondTrap::setName( name );
+	this->setName( name );
 	this->ClapTrap::setName( name.append( "_clap_name" ) );
 	this->_HP = this->FragTrap::getHP();
 	this->_EP = this->ScavTrap::getEP();
@@ -38,7 +28,7 @@ DiamondTrap::DiamondTrap( std::string name ) : ScavTrap( name ),
 DiamondTrap::DiamondTrap( DiamondTrap const &other ) : ScavTrap( other.getName() ),
 													   FragTrap( other.getName() ) {
 	this->setName( other.getName() );
-	ClapTrap::_name = name.append( "_clap_name" );
+	this->ClapTrap::setName( other.getName().append( "_clap_name" ));
 	this->setHP( other.FragTrap::getHP() );
 	this->setEP( other.ScavTrap::getEP() );
 	this->setAD( other.FragTrap::getAD() );
@@ -55,6 +45,22 @@ void	DiamondTrap::attack( std::string const &target ) {
 	this->ScavTrap::attack( target );
 }
 
+std::string		DiamondTrap::getName( void ) const {
+
+	return this->_name;
+}
+
+void		DiamondTrap::setName( std::string const &NewName ) {
+
+	std::string aux;
+	std::string const aux2;
+
+	aux = NewName;
+	aux.append( "_clap_name" );
+	this->ClapTrap::setName( aux );
+	this->_name = NewName;
+}
+
 void	DiamondTrap::whoAmI( void ) {
 
 	std::cout << "DiamondTrap: " << std::endl;
@@ -64,6 +70,7 @@ void	DiamondTrap::whoAmI( void ) {
 
 DiamondTrap&	DiamondTrap::operator = ( DiamondTrap const &other ) {
 
+	this->ClapTrap::setName( other.getName().append( "_clap_name" ) );
 	this->_name = other.getName();
 	this->_HP = other.getHP();
 	this->_EP = other.getEP();

@@ -155,7 +155,7 @@ int main() {
 	std::cout << "/////////////////// DIAMOND TRAP PART /////////////////////" << std::endl << std:: endl;
 	DiamondTrap	a( "Christian");
 
-	/*
+	
 	a.attack( "log of wood with spikes" );
 	a.takeDamage( 5 );
 
@@ -167,9 +167,9 @@ int main() {
 
 	std::cout << std::endl;
 
-	std::cout << " Now we copy " << a.getName() << " into a new FragTrap and name it different:" << std::endl;
+	std::cout << " Now we copy " << a.getName() << " into a new DiamondTrap and name it different:" << std::endl;
 
-	FragTrap	b( a );
+	DiamondTrap	b( a );
 
 	b.setName( "Some other Christian" ); 
 	b.attack( "log of wood with spikes" );
@@ -182,8 +182,13 @@ int main() {
 	std::cout << b.getName() << " has now  " << b.getHP() << " Hit Points! " << std::endl;
 
 	std::cout << std::endl;
+	a.guardGate();
 	a.highFivesGuys();
+	a.whoAmI();
+	std::cout << std::endl;
+	b.guardGate();
 	b.highFivesGuys();
+	b.whoAmI();
 	std::cout << std::endl;
 
 	a = b;
@@ -197,6 +202,6 @@ int main() {
 
 	std::cout << a.getName() << " has now  " << a.getHP() << " Hit Points! " << std::endl;
 
-	std::cout << std::endl;*/	
+	std::cout << std::endl;
 	return 0;
 }

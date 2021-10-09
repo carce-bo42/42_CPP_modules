@@ -6,7 +6,7 @@ FragTrap::FragTrap( void ) : ClapTrap("Default FragTrap") {
 	this->setEP(100);
 	this->setAD(30);
 
-	std::cout << "FragTrap " << name << " default unargumented constructor called" << std::endl;
+	std::cout << "FragTrap " << this->getName() << " default unargumented constructor called" << std::endl;
 }
 
 FragTrap::FragTrap( std::string name ) : ClapTrap( name ) {
