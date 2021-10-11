@@ -1,5 +1,8 @@
+#ifndef MATERIA_HPP
+# define MATERIA_HPP
+
 #include <iostream>
-#include "ICharacter.hpp"
+#include "Character.hpp"
 
 class AMateria;
 
@@ -84,3 +87,5 @@ class Cure : public AMateria {
 		AMateria*			clone( void ) const;
 
 };
+
+#endif

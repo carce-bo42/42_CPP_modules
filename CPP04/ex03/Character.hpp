@@ -1,4 +1,8 @@
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
+
 #include <iostream>
+#include "Materia.hpp"
 
 class ICharacter {
 
@@ -33,3 +37,5 @@ class Character : public ICharacter {
 		void				use( int idx, ICharacter& target );
 
 };
+
+#endif
