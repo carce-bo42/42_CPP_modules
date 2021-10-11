@@ -20,7 +20,7 @@ DiamondTrap::DiamondTrap( std::string name ) : ScavTrap( name ),
 	this->ClapTrap::setName( name.append( "_clap_name" ) );
 	this->_HP = this->FragTrap::getHP();
 	this->_EP = this->ScavTrap::getEP();
-	std::cout << this->_EP << " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
+	//std::cout << this->_EP << " AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
 	this->_AD = this->FragTrap::getAD();
 
 	std::cout << "DiamondTrap " << this->_name << " default constructor called." << std::endl;
