@@ -1,5 +1,6 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include <stdlib.h>
 
 int main()
 {
@@ -17,6 +18,7 @@ int main()
 		delete meta;
 		delete i;
 		delete j;
+		//system("leaks Animals_test1");
 	}
 	std::cout << std::endl;
 	std::cout << std::endl;
@@ -34,5 +36,6 @@ int main()
 	delete meta;
 	delete i;
 	delete j;
+	//system("leaks Animals_test1");
 	return 0;
 }
