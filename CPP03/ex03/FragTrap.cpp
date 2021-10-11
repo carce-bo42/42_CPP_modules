@@ -32,6 +32,16 @@ FragTrap::~FragTrap( void ) {
 	std::cout << "FragTrap " << this->getName() << " destructor called" << std::endl;
 }
 
+unsigned int	FragTrap::getEP( void ) const {
+
+	return this->_EP;
+}
+
+void	FragTrap::setEP( unsigned int EP ) {
+
+	this->_EP = EP ;
+}
+
 void	FragTrap::attack( std::string const &target ) {
 
 	std::cout << "FragTrap " << this->getName() << " has attacked " << target << ", causing " << this->getAD() << " points of damage!" << std::endl;

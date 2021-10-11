@@ -15,7 +15,15 @@ class FragTrap : virtual public ClapTrap {
 		void			attack( std::string const &target );
 		void			highFivesGuys( void );
 
+		unsigned int	getEP( void ) const;
+		void			setEP( unsigned int EP );
+
+
 		FragTrap& operator = ( FragTrap const &other );
+
+	protected:
+
+		unsigned int	_EP;
 
 };
 
