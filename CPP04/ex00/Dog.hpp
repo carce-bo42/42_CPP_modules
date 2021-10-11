@@ -17,6 +17,23 @@ class Dog : public Animal {
 
 		virtual void 	makeSound( void ) const;
 
-}
+};
+
+class WrongDog : public WrongAnimal {
+
+	public:
+
+		WrongDog( void );
+		WrongDog( WrongDog const &other );
+		~WrongDog( void );
+
+		WrongDog&	operator = ( WrongDog const &other );
+
+		std::string		getType( void ) const;
+
+		void 	makeSound( void ) const;
+
+};
+
 
 #endif

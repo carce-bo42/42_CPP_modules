@@ -17,6 +17,22 @@ class Cat : public Animal {
 
 		virtual void 	makeSound( void ) const;
 
-}
+};
+
+class WrongCat : public WrongAnimal {
+
+	public:
+
+		WrongCat( void );
+		WrongCat( WrongCat const &other );
+		~WrongCat( void );
+
+		WrongCat&	operator = ( WrongCat const &other );
+
+		std::string		getType( void ) const;
+
+		void 	makeSound( void ) const;
+
+};
 
 #endif
