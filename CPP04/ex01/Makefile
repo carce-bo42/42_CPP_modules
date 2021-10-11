@@ -1,4 +1,4 @@
-NAME = Animals_test1
+NAME = Animals_test2
 
 SRCS = main.cpp \
 	   Animal.cpp \
