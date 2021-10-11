@@ -9,7 +9,7 @@ class Cat : public Animal {
 
 		Cat( void );
 		Cat( Cat const &other );
-		~Cat( void );
+		virtual ~Cat( void );
 
 		Cat&	operator = ( Cat const &other );
 
@@ -25,7 +25,7 @@ class WrongCat : public WrongAnimal {
 
 		WrongCat( void );
 		WrongCat( WrongCat const &other );
-		~WrongCat( void );
+		virtual ~WrongCat( void );
 
 		WrongCat&	operator = ( WrongCat const &other );
 

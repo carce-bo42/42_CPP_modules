@@ -9,7 +9,7 @@ class Dog : public Animal {
 
 		Dog( void );
 		Dog( Dog const &other );
-		~Dog( void );
+		virtual ~Dog( void );
 
 		Dog&	operator = ( Dog const &other );
 
@@ -25,7 +25,7 @@ class WrongDog : public WrongAnimal {
 
 		WrongDog( void );
 		WrongDog( WrongDog const &other );
-		~WrongDog( void );
+		virtual ~WrongDog( void );
 
 		WrongDog&	operator = ( WrongDog const &other );
 

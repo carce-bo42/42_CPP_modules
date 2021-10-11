@@ -9,7 +9,7 @@ class Animal {
 		Animal( void);
 		Animal( std::string name );
 		Animal( Animal const &other );
-		~Animal( void );
+		virtual ~Animal( void );
 
 		virtual void	makeSound( void ) const;
 		std::string		getType( void ) const;
@@ -29,7 +29,7 @@ class WrongAnimal {
 		WrongAnimal( void);
 		WrongAnimal( std::string name );
 		WrongAnimal( WrongAnimal const &other );
-		~WrongAnimal( void );
+		virtual ~WrongAnimal( void );
 
 		void	makeSound( void ) const;
 		std::string		getType( void ) const;
