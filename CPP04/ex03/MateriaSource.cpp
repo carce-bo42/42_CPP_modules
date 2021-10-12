@@ -1,7 +1,7 @@
 #include "MateriaSource.hpp"
 
 void	MateriaSource::deleteInventory( void ) {
-	for (int i=0; i<4; i++)	{
+	for (int i=3; i>0; i--)	{
 		if (this->Inventory[i] != NULL)
 			delete this->Inventory[i];
 	}
@@ -51,6 +51,12 @@ MateriaSource&	MateriaSource::operator = ( MateriaSource const &other ) {
 void	MateriaSource::learnMateria( AMateria* MateriaPtr ) {
 
 	if (MateriaPtr != NULL) {
+
+		for (int i=0; i<4; i++) {
+			if (this->Inventory[i] == MateriaPtr)
+				return ;
+		}
+
 		int	j=-1;
 		for (int i=0; i<4; i++) {
 			if (this->Inventory[i] == NULL) {
@@ -59,6 +65,7 @@ void	MateriaSource::learnMateria( AMateria* MateriaPtr ) {
 				break ;
 			}
 		}
+
 	if (j != -1)
 		std::cout << "Succesfully added " << MateriaPtr->getType() << " to the Source Inventory!" << std::endl;
 	else
@@ -70,8 +77,10 @@ AMateria*	MateriaSource::createMateria( std::string const &type ) {
 
 	for (int i=0; i<4; i++) {
 		if (this->Inventory[i] != NULL) {
-			if (!this->Inventory[i]->getType().compare(type))
-				return this->Inventory[i]->clone();
+			if (!this->Inventory[i]->getType().compare(type)) {
+				AMateria*	out = this->Inventory[i]->clone();
+				return out;
+			}
 		}
 	}
 	std::cout << "Cannot create materia of unknown type \"" << type << "\"" << std::endl;

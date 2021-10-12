@@ -65,22 +65,34 @@ std::string const&	Character::getName( void ) const {
 void	Character::equip( AMateria* MateriaPtr ) {
 
 	if (MateriaPtr != NULL) {
+
+		for (int i=0; i<4; i++) {
+			if (this->Inventory[i] == MateriaPtr)
+			   return ;	
+		}
 		for (int i=0; i<4; i++) {
 			if (this->Inventory[i] == NULL) {
 				this->Inventory[i] = MateriaPtr;
 				break ;
 			}
 		}
+
 	}
 }
 
 void	Character::unequip( int idx ) {
 
 	if (idx >= 0 && idx < 4) {
+		if (this->Inventory[idx] != NULL) {
 
-		this->Inventory[idx] = NULL;
-		for (int i=idx; i<3; i++) {
-			this->Inventory[i] = this->Inventory[i + 1];
+			this->Inventory[idx] = NULL;
+
+			for (int i=idx; i<3 && this->Inventory[i + 1]; i++) {
+
+				this->Inventory[i] = this->Inventory[i + 1];
+				this->Inventory[i + 1] = NULL;
+
+			}
 		}
 	}
 }
