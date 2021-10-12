@@ -1,6 +1,6 @@
 NAME = Interface_Recap_Test
 
-SRCS = main_kevin.cpp \
+SRCS = main.cpp \
 	   Character.cpp \
 	   Materia.cpp \
 	   MateriaSource.cpp
