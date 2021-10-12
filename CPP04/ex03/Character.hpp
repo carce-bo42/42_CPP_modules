@@ -20,6 +20,7 @@ class Character : public ICharacter {
 
 	private:
 
+		AMateria*			Inventory[4];
 		std::string const&	_name;
 
 	public:
@@ -29,7 +30,7 @@ class Character : public ICharacter {
 		Character( Character const &rhs );
 		~Character( void );
 
-		Character operator = ( Characer const &rhs );
+		Character& operator = ( Characer const &rhs );
 
 		std::string const&	getName( void ) const;
 		void				equip( AMateria* m );
