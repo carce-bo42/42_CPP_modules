@@ -34,13 +34,15 @@ void	Cat::makeSound( void ) const {
 
 Cat&	Cat::operator = ( Cat const &other ) {
 
-	delete this->CatBrain;
+	if (&other != this) {
+		delete this->CatBrain;
 
-	Brain*	newCatBrain = new Brain;
-	for (int i=0; i < 100; i++) {
-		newCatBrain->setIdea( i, other.CatBrain->getIdea(i) );
+		Brain*	newCatBrain = new Brain;
+		for (int i=0; i < 100; i++) {
+			newCatBrain->setIdea( i, other.CatBrain->getIdea(i) );
+		}
+		this->_type = other.getType();
+		this->CatBrain = newCatBrain;
 	}
-	this->_type = other.getType();
-	this->CatBrain = newCatBrain;
 	return *this;
 }

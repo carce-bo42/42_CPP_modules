@@ -18,6 +18,16 @@ Brain::~Brain( void ) {
 	std::cout << "Brain destructor called" << std::endl;
 }
 
+Brain&	Brain::operator = ( Brain const &other ) {
+
+	if (&other != this) {
+		for (int i=0; i < 100; i++) {
+			this->_ideas[i] = other.getIdea( i );
+		}
+	}
+	return *this;
+}
+
 std::string	Brain::getIdea( int idx ) const {
 
 	if (idx >= 0 && idx < 100 )

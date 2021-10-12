@@ -7,7 +7,6 @@ class IMateriaSource {
 
 	public:
 
-		virtual	IMateriaSource( void );
 		virtual	~IMateriaSource() {}
 
 		virtual void		learnMateria(AMateria*) = 0;
@@ -32,6 +31,7 @@ class MateriaSource : public IMateriaSource {
 
 		void		initInventory( void );
 		void		deleteInventory( void );
+		void		cloneInventory( MateriaSource const &other );
 
 		AMateria*	Inventory[4];
 

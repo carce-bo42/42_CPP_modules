@@ -1,15 +1,15 @@
-NAME = Animals_test1
+NAME = Interface_Recap_Test
 
 SRCS = main.cpp \
-	   Animal.cpp \
-	   Dog.cpp \
-	   Cat.cpp
+	   Character.cpp \
+	   Materia.cpp \
+	   MateriaSource.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = clang++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3 -fsanitize=address
 
 # Rule for classes with their respective .hpp file:
 %.o: %.cpp %.hpp Makefile

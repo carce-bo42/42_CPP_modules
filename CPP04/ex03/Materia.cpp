@@ -14,8 +14,8 @@ AMateria::AMateria( AMateria const &rhs ) : type( rhs.type ) {
 AMateria::~AMateria( void ) {
 }
 
-AMateria&	operator = (AMateria const &rhs ) {
-	this->type = AMateria.rhs ;
+AMateria&	AMateria::operator = (AMateria const &rhs ) {
+	this->type = rhs.getType() ;
 	return *this;
 }
 
@@ -32,13 +32,15 @@ void	AMateria::use( ICharacter& target ) {
 Ice::Ice( void ) : AMateria( "ice" ) {
 }
 
-Ice::Ice( Ice const &rhs ) AMateria( rhs.getType ) {
+Ice::Ice( Ice const &rhs ) : AMateria( rhs.getType() ) {
 }
 
 Ice::~Ice( void ) {
 }
 
-Ice&	operator = (  Ice const &rhs ) {
+Ice&	Ice::operator = (  Ice const &rhs ) {
+	this->type = rhs.getType();
+	return *this;
 }
 
 void	Ice::use( ICharacter& target ) {
@@ -52,16 +54,18 @@ AMateria*	Ice::clone( void ) const {
 //////////////////////////// Cure ///////////////////////////////////
 
 
-Cure::Cure( void ) : AMateria( "ice" ) {
+Cure::Cure( void ) : AMateria( "cure" ) {
 }
 
-Cure::Cure( Cure const &rhs ) AMateria( rhs.getType ) {
+Cure::Cure( Cure const &rhs ) : AMateria( rhs.getType() ) {
 }
 
 Cure::~Cure( void ) {
 }
 
-Cure&	operator = (  Cure const &rhs ) {
+Cure&	Cure::operator = (  Cure const &rhs ) {
+	this->type = rhs.getType();
+	return *this;
 }
 
 void	Cure::use( ICharacter& target ) {

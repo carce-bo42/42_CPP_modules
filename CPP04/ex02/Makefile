@@ -10,7 +10,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 CXX = clang++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Rule for classes with their respective .hpp file:
 %.o: %.cpp %.hpp Makefile

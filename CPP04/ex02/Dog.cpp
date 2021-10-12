@@ -34,13 +34,15 @@ void	Dog::makeSound( void ) const {
 
 Dog&	Dog::operator = ( Dog const &other ) {
 
-	delete this->DogBrain;
+	if (&other != this) {
+		delete this->DogBrain;
 
-	Brain*	newDogBrain = new Brain;
-	for (int i=0; i < 100; i++) {
-		newDogBrain->setIdea( i, other.DogBrain->getIdea(i) );
+		Brain*	newDogBrain = new Brain;
+		for (int i=0; i < 100; i++) {
+			newDogBrain->setIdea( i, other.DogBrain->getIdea(i) );
+		}
+		this->_type = other.getType();
+		this->DogBrain = newDogBrain;
 	}
-	this->_type = other.getType();
-	this->DogBrain = newDogBrain;
 	return *this;
 }
