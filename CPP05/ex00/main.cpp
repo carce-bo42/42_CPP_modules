@@ -17,6 +17,21 @@ int main() {
 		std::cout << a << std::endl;
 		std::cout << e << std::endl;
 
+		// Exception when incrementing  grade higher than 1 (maximum rank).
+		/*for (int i=0; i<100; i++) {
+			std::cout << a << std::endl;
+			a.upGrade(); 
+		}*/                         
+
+		a = d;
+		std::cout << std::endl;
+
+		// Exception when decrementing grade lower than 150 (minimum rank).
+		/*for (int i=0; i<200; i++) {
+			std::cout << a << std::endl;
+			a.downGrade(); 
+		}*/
+
 	}
 	catch (Bureaucrat::GradeTooLowException &e ) {
 
