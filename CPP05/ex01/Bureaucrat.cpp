@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-void	Bureaucrat::ErrorThrower( int grade ) {
+void	Bureaucrat::errorCheck( int grade ) {
 
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException() ;
@@ -12,11 +12,11 @@ void	Bureaucrat::ErrorThrower( int grade ) {
 
 Bureaucrat::Bureaucrat( std::string const name, int grade ) : _name( name ), _grade( grade ) {
 
-	ErrorThrower( grade );
+	errorCheck( grade );
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const &other ) : _name( other.getName() ), _grade( other.getGrade() ) {
-	//An ErrorThrower( other.grade ) here would be redundant (A bureaucrat cannot exist
+	//An errorCheck( other.grade ) here would be redundant (A bureaucrat cannot exist
 	//if it does not have a valid grade, hence copying one that exists ensures that the
 	//grade copied is correct.
 }
@@ -42,14 +42,24 @@ int		Bureaucrat::getGrade( void ) const {
 
 void	Bureaucrat::upGrade( void ) {
 
-	ErrorThrower( this->_grade - 1 );
+	errorCheck( this->_grade - 1 );
 	--(this->_grade);
 }
 
 void	Bureaucrat::downGrade( void ) {
 
-	ErrorThrower( this->_grade + 1 );
+	errorCheck( this->_grade + 1 );
 	++(this->_grade);
+}
+
+void	Bureaucrat::signForm( Form &f ) {
+
+	if ( this->getGrade() <= f.getSignGrade() ) {
+		f.beSigned( *this );
+		std::cout << "* " << *this << " signs " << f << " *" << std::endl;
+	}
+	else
+		std::cout << *this << " cannot sign " << f << " because its grade is inferior than the required one" << std::endl;
 }
 
 std::ostream&	operator << ( std::ostream &o, Bureaucrat const &rhs ) {

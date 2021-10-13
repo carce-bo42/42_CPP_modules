@@ -1,7 +1,8 @@
-NAME = Exceptions1
+NAME = Exceptions2
 
 SRCS = main.cpp \
 	   Bureaucrat.cpp \
+	   Form.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
