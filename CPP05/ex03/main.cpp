@@ -64,6 +64,9 @@ int main() {
 
 		//a.executeForm( scf2 ); //Error opening output file exception.
 
+		delete pf;
+		delete rqf;
+		delete scf;
 	}
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
