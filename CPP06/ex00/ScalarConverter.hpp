@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <cmath>
 
 #define SC ScalarConverter
 
@@ -8,24 +8,28 @@ class ScalarConverter {
 	private:
 
 		// Rep stands for Representation.
-
+		
+		std::string		LiteralValue;
+		int				intRep;
+		float			floatRep;
+		char			charRep;
+		double			doubleRep;
 
 		// the initial 4bits from this value will be
 		// respectively set to 1 in case an exception is
 		// thrown by any of the data type conversors I use
 		// (stoi, stof, stod):
-		// ImpossibleFlag ^ 0000 0001 = int flag.
-		// ImpossibleFlag ^ 0000 0010 = float flag;
-		// ImpossibleFlag ^ 0000 0100 = char flag;
-		// ImpossibleFlag ^ 0000 1000 = double flag;
+		// Flag & 0000 0000 0000 0001 = char flag;
+		// Flag & 0000 0000 0000 0010 = int flag.
+		// Flag & 0000 0000 0000 0100 = float flag;
+		// Flag & 0000 0000 0000 1000 = double flag;
+		// Flag & 0000 0000 0001 0000 = is char flag;
+		// Flag & 0000 0000 0010 0000 = is int flag;
+		// Flag & 0000 0000 0100 0000 = is float flag;
+		// Flag & 0000 0000 1000 0000 = is double flag;
+		//
 
-		short int		impossibleFlag;
-
-		std::string		LiteralValue;
-		int				intRep;
-		float			foatRep;
-		char			charRep;
-		double			doubleRep;
+		unsigned short int		Flag;
 
 	public:
 
@@ -33,17 +37,17 @@ class ScalarConverter {
 		SC( SC const &other );
 		~SC( void );
 
-		SC operator = ( SC const &other );
+		SC& operator = ( SC const &other );
 
-		std::string		getLiteralValue( void );
-		int				getIntRep( void );
-		float			getfloatRep( void );
-		char			getCharRep( void );
-		double			getDoubleRep( void );
+		std::string		getLiteralValue( void ) const;
+		int				getIntRep( void ) const;
+		float			getFloatRep( void ) const;
+		char			getCharRep( void ) const;
+		double			getDoubleRep( void ) const;
 
-		short int		getImpossibleFlag( void );
+		short int		getFlag( void ) const;
 
 		void			DoConversions( void );
+		void			DetectType( void );
 		void			writeOutput( void );
 };
-
