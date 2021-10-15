@@ -1,4 +1,6 @@
 #include "ScalarConverter.hpp"
+#include <limits>
+#include <stdio.h>
 
 SC::SC( std::string s ) : LiteralValue( s ),
 						  intRep( 0 ),
@@ -72,6 +74,7 @@ void	SC::DetectType( void ) {
 		try {
 			this->intRep = static_cast<int>(std::stoi(this->LiteralValue));
 			this->Flag += 32; // += 0010 0000;
+			this->Flag += 256; //Sets the .0 flag to 1.
 			return ;
 		} catch (...) {}
 	}
@@ -95,7 +98,6 @@ void	SC::DetectType( void ) {
 	} catch(...) {
 		this->Flag += (1 + 2 + 4 + 8); // += 0000 1111 // sets all representations to impossible.
 	}
-
 
 }
 
@@ -126,6 +128,7 @@ void	SC::DoConversions( void ) {
 		}catch (...) {
 			this->Flag += 8;
 		}
+		return ;
 	}
 
 	//If it is an int:
@@ -148,6 +151,7 @@ void	SC::DoConversions( void ) {
 		}catch (...) {
 			this->Flag += 8;
 		}
+		return ;
 	}
 
 	//If it is a float:
@@ -170,6 +174,7 @@ void	SC::DoConversions( void ) {
 		}catch (...) {
 			this->Flag += 8;
 		}
+		return ;
 	}
 
 	// If it is a double:	
@@ -188,17 +193,23 @@ void	SC::DoConversions( void ) {
 		}
 
 		try {
-			this->floatRep = static_cast<double>(this->doubleRep);
+			this->floatRep = static_cast<float>(this->doubleRep);
 		}catch (...) {
 			this->Flag += 4;
 		}
+		return ;
 	}
 }
+
+// A few comments: So we have to implement inf, -inf, nan, inff, -inff, nanf. So far so good, this is achieved by 
+// using the limits library. But when printing an int that comes from a cast to int of an inf float/double, it
+// gives the minimum int. Of course this is not correct. So the way of doing it is by asking, when printing, 
+// whether the float number is lower/greater than the numeric limit max/min int.
 	
 void	SC::writeOutput( void ) {
 
 	std::cout << "char: ";
-	if ((this->Flag & 1) == 1)
+	if ((this->Flag & 1) == 1 || !(this->floatRep <= static_cast<float>(std::numeric_limits<int>::max()) && this->floatRep >= static_cast<float>(std::numeric_limits<int>::min())))
 		std::cout << "impossible" << std::endl;
 	else if (!isprint(this->charRep))
 		std::cout << "Non displayable" << std::endl;
@@ -208,23 +219,43 @@ void	SC::writeOutput( void ) {
 	std::cout << "int: ";
 	if ((this->Flag & 2) == 2)
 		std::cout << "impossible" << std::endl;
-	else
+	else if (this->floatRep <= static_cast<float>(std::numeric_limits<int>::max()) && this->floatRep >= static_cast<float>(std::numeric_limits<int>::min()))
 		std::cout << this->intRep << std::endl; 
+	else
+		std::cout << "impossible" << std::endl; 
 
 	std::cout << "float: ";
 	if ((this->Flag & 4) == 4)
 		std::cout << "impossible" << std::endl;
-	else if (floor(this->floatRep) == this->floatRep)
+	else if (this->floatRep == 0)
 		std::cout << this->floatRep << ".0f" << std::endl;
-	else
-		std::cout << this->floatRep << "f" << std::endl;
+	else if (this->floatRep <= std::numeric_limits<float>::max() && this->floatRep >= std::numeric_limits<float>::min()) {
+		if ((this->Flag & 256) == 256)
+			std::cout << this->floatRep << ".0f" << std::endl;
+		else
+			std::cout << this->floatRep << "f" << std::endl;
+	}
+	else {
+		if ((this->Flag & 256) == 256)
+			std::cout << this->floatRep << ".0f" << std::endl;
+		else
+			std::cout << this->floatRep << "f" << std::endl;
+	}
 
 	std::cout << "double: ";
 	if ((this->Flag & 8) == 8)
 		std::cout << "impossible" << std::endl;
-	else if ( floor(this->doubleRep) == this->doubleRep )
-		std::cout << this->doubleRep << ".0" << std::endl;
-	else
-		std::cout << this->doubleRep << std::endl;
+	else if (this->doubleRep <= std::numeric_limits<double>::max() && this->doubleRep >= std::numeric_limits<double>::min()) {
+		if ((this->Flag & 256) == 256)
+			std::cout << this->floatRep << ".0" << std::endl;
+		else
+			std::cout << this->doubleRep << std::endl;
+	}
+	else {
+		if ((this->Flag & 256) == 256)
+			std::cout << this->doubleRep << ".0" << std::endl;
+		else
+			std::cout << this->doubleRep << std::endl;
+	}
 }
 

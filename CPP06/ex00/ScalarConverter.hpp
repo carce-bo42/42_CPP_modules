@@ -27,7 +27,7 @@ class ScalarConverter {
 		// Flag & 0000 0000 0010 0000 = is int flag;
 		// Flag & 0000 0000 0100 0000 = is float flag;
 		// Flag & 0000 0000 1000 0000 = is double flag;
-		//
+		// Flag & 0000 0001 0000 0000 = must be put .0 on float and double
 
 		unsigned short int		Flag;
 
