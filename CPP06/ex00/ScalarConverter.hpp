@@ -1,3 +1,6 @@
+#ifndef SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
+
 #include <iostream>
 #include <cmath>
 
@@ -51,3 +54,5 @@ class ScalarConverter {
 		void			DetectType( void );
 		void			writeOutput( void );
 };
+
+#endif
