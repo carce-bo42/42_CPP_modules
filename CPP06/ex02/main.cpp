@@ -10,12 +10,15 @@ Base*	generate( void ) {
 	Base *p;
 	
 	if (val % 3 == 0) {
+		std::cout << "A has been generated" << std::endl;
 		p = new A();
 	}
 	else if (val % 3 == 1) {
+		std::cout << "B has been generated" << std::endl;
 		p = new B();
 	}
 	else {
+		std::cout << "C has been generated" << std::endl;
 		p = new C();
 	}
 	return p;
@@ -25,16 +28,19 @@ void	identify(Base& p) {
 
 	try {
 		A&	a = dynamic_cast<A&>(p);
+		(void)a;
 		std::cout << "A" << std::endl;
 		return ;
 	} catch(...) {}
 	try {
 		B&	b = dynamic_cast<B&>(p);
+		(void)b;
 		std::cout << "B" << std::endl;
 		return ;
 	} catch(...){}
 	try {
 		C&	c = dynamic_cast<C&>(p);
+		(void)c;
 		std::cout << "C" << std::endl;
 		return ;
 	} catch(...) {}
@@ -60,6 +66,16 @@ void	identify(Base* p) {
 		return ;
 	}
 	std::cout << "What did you just pass me" << std::endl;
+}
+
+
+int main() {
+
+	Base*	a;
+
+	a = generate();
+	identify( a );
+	identify( *a );
 }
 
 
