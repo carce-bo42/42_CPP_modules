@@ -1,4 +1,4 @@
-NAME = serialization
+NAME = IdentifyRealType
 
 SRCS = main.cpp
 

@@ -26,6 +26,8 @@ int main() {
 	std::cout << std::endl;
 
 	std::cout << "Value in Data using deserializedseriazed pointer: " << c->getNbr() << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
 	delete c;
 	}
 	Data*	a = new Data(-123);
