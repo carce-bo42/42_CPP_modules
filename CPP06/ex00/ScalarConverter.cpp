@@ -103,7 +103,7 @@ void	SC::DetectType( void ) {
 // one of these flags is already checking if these case has happened.
 void	SC::DoConversions( void ) {
 
-	if ((this->Flag & 0xffff) <= 8)
+	if ((this->Flag & 0xffff) <= 1 + 2 + 4 + 8)
 		return ;
 
 	// If it is a char.
