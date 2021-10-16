@@ -63,7 +63,6 @@ void	SC::DetectType( void ) {
 		if (isprint(this->LiteralValue[0]) && !isdigit(this->LiteralValue[0])) {
 			this->charRep = static_cast<char>(this->LiteralValue[0]);
 			this->Flag += 16; //+= 0001 0000;
-			this->Flag += 256; //Sets the .0 flag to 1.
 			return ;
 		}
 	}
@@ -74,7 +73,6 @@ void	SC::DetectType( void ) {
 		try {
 			this->intRep = static_cast<int>(std::stoi(this->LiteralValue));
 			this->Flag += 32; // += 0010 0000;
-			this->Flag += 256; //Sets the .0 flag to 1.
 			return ;
 		} catch (...) {}
 	}
@@ -231,13 +229,13 @@ void	SC::writeOutput( void ) {
 		std::cout << "impossible" << std::endl;
 	else if (this->floatRep <= std::numeric_limits<float>::max()
 				&& this->floatRep >= std::numeric_limits<float>::min()) {
-		if ((this->Flag & 256) == 256)
+		if (this->floatRep - static_cast<int>(this->floatRep) == 0)
 			std::cout << this->floatRep << ".0f" << std::endl;
 		else
 			std::cout << this->floatRep << "f" << std::endl;
 	}
 	else {
-		if ((this->Flag & 256) == 256)
+		if (this->floatRep - static_cast<int>(this->floatRep) == 0)
 			std::cout << this->floatRep << ".0f" << std::endl;
 		else
 			std::cout << this->floatRep << "f" << std::endl;
@@ -248,13 +246,13 @@ void	SC::writeOutput( void ) {
 		std::cout << "impossible" << std::endl;
 	else if (this->doubleRep <= std::numeric_limits<double>::max()
 				&& this->doubleRep >= std::numeric_limits<double>::min()) {
-		if ((this->Flag & 256) == 256)
+		if (this->floatRep - static_cast<int>(this->floatRep) == 0)
 			std::cout << this->floatRep << ".0" << std::endl;
 		else
 			std::cout << this->doubleRep << std::endl;
 	}
 	else {
-		if ((this->Flag & 256) == 256)
+		if (this->floatRep - static_cast<int>(this->floatRep) == 0)
 			std::cout << this->doubleRep << ".0" << std::endl;
 		else
 			std::cout << this->doubleRep << std::endl;
