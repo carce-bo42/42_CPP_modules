@@ -115,5 +115,7 @@ int main() {
         numbers[i] = rand();
     }
     delete [] mirror;
+	std::cout << std::endl;
+	std::cout << std::endl;
 	return 0;
 }
