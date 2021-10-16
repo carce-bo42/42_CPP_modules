@@ -81,7 +81,7 @@ void	SC::DetectType( void ) {
 	
 	//Float goes third.
 	// If it does contain an f and a dot: 
-	if (this->LiteralValue.find('.') != std::string::npos && this->LiteralValue.find('f') != std::string::npos) {
+	if (this->LiteralValue.find('f') != std::string::npos) {
 		try {
 			this->floatRep = static_cast<float>(std::stof(this->LiteralValue));
 			this->Flag += 64; // += 0100 0000;
