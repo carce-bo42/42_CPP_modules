@@ -63,6 +63,7 @@ void	SC::DetectType( void ) {
 		if (isprint(this->LiteralValue[0]) && !isdigit(this->LiteralValue[0])) {
 			this->charRep = static_cast<char>(this->LiteralValue[0]);
 			this->Flag += 16; //+= 0001 0000;
+			this->Flag += 256; //Sets the .0 flag to 1.
 			return ;
 		}
 	}
