@@ -66,14 +66,14 @@ void	Span::addRange( int start, int end ) {
 	else if ( start < end ) {
 		unsigned int max = static_cast<unsigned int>(end - start); 
 
-		for (unsigned int i=0; i < max; i++) {
+		for (unsigned int i=0; i < max + 1; i++) {
 			this->addNumber( start++ );
 		}
 	}
 	else {
 		unsigned int max = static_cast<unsigned int>(start - end);
 
-		for (unsigned int i=0; i < max; i++) {
+		for (unsigned int i=0; i < max + 1; i++) {
 			this->addNumber( start-- );
 		}
 	}
