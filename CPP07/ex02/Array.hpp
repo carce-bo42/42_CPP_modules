@@ -26,7 +26,7 @@ class Array {
 			if (this != &other) {
 
 				delete [] this->A;
-				A = new T[other.size()];
+				this->A = new T[other.size()];
 				this->_size = other.size();
 
 				for (unsigned int i=0; i<other.size(); i++) {
